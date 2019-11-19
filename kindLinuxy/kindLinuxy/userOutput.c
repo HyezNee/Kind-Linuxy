@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int _work(char **info) {//execl,wait,exit
-	int stat;
+	int stat=0;
 
 
 	return stat;
