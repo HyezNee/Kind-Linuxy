@@ -1,11 +1,11 @@
 #include<stdio.h>
 
-_command() {
+char** _command() {//read
 
 
 }
 
-_parse() {
+void _parse(char *str, char *buf) {
 
 
 }

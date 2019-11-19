@@ -1,12 +1,14 @@
 #include<stdio.h>
 
-_work() {
+int _work(char **info) {//execl,wait,exit
+	int stat;
 
 
+	return stat;
 }
 
 
-_fileopen() {
+void _fileopen() {//open,read,lseek
 
 
 }

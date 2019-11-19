@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-_printInfo() {
+void _printInfo() {//execl,getuid
 
 
 }

@@ -3,6 +3,6 @@
 #include"userInput.c"
 #include"userOutput.c"
 
-_manage() {
+void _manage() {//exit
 
 }
