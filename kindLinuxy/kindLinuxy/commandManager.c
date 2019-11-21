@@ -4,5 +4,6 @@
 #include"userOutput.c"
 
 void _manage() {//exit
+	_command();
 
 }
