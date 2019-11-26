@@ -1,5 +1,4 @@
-#include<stdio.h>
-#include<string.h>
+#include "header.h"
 #pragma warning(disable:4996) //scanf 보안 경고 제거
 
 
@@ -33,4 +32,9 @@ void _command() {//readline
 	}
 
 	//return info;
+}
+
+void _parse(char *str, char *buf) {
+
+
 }

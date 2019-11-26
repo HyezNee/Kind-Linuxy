@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include "header.h"
 
 int _work(char **info) {//execl,wait,exit
 	int stat=0;
