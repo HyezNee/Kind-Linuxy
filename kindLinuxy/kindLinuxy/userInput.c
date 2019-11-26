@@ -24,23 +24,23 @@ void _command() {//readline으로 바꾸기 나중에
 	}
 	else if (!strcmp(commandInput, "경로이동")) {
 		strcat(commandstr, commandInput);
-		strcat(commandstr, "#");
+		strcat(commandstr, partition);
 	}
 	else if (!strcmp(commandInput, "목록")) {
 		strcat(commandstr, commandInput);
-		strcat(commandstr, "#");
+		strcat(commandstr, partition);
 	}
 	else if (!strcmp(commandInput, "폴더생성")) {
 		strcat(commandstr, commandInput);
-		strcat(commandstr, "#");
+		strcat(commandstr, partition);
 	}
 	else if (!strcmp(commandInput, "폴더삭제")) {
 		strcat(commandstr, commandInput);
-		strcat(commandstr, "#");
+		strcat(commandstr, partition);
 	}
 	else if (!strcmp(commandInput, "명령어")) {
 		strcat(commandstr, commandInput);
-		strcat(commandstr, "#");
+		strcat(commandstr, partition);
 	}
 	else {
 		printf("존재하지 않는 명령어입니다. 다시 입력해주세요.\n");
