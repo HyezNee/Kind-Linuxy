@@ -3,29 +3,44 @@
 
 
 //명령어 1회 입력받아 처리하고 폼 형태로 return(char **형)
-void _command() {//readline
+void _command() {//readline으로 바꾸기 나중에
 	//char **info; //명령어 정리된 배열
 	char commandInput[10];
+	char options[10];
+	char arguments[150];
+	char commandstr[200]="";
+	char partition[2] = "#";
 
 	printf("명령어 입력 >>");
 	scanf("%8s", commandInput);
 	if (!strcmp(commandInput, "설명")) {
-		printf("설명인식\n");
+		strcat(commandstr, commandInput);
+		strcat(commandstr, partition);
+		strcat(commandstr, partition);
+		printf("설명을 출력할 명령어를 입력하세요(없으면 x입력)\n인자 입력 >>");
+		scanf("%130s", arguments);
+		strcat(commandstr, arguments);
+		printf("%s", commandstr);
 	}
 	else if (!strcmp(commandInput, "경로이동")) {
-		printf("경로이동인식\n");
+		strcat(commandstr, commandInput);
+		strcat(commandstr, "#");
 	}
 	else if (!strcmp(commandInput, "목록")) {
-		printf("목록인식\n");
+		strcat(commandstr, commandInput);
+		strcat(commandstr, "#");
 	}
 	else if (!strcmp(commandInput, "폴더생성")) {
-		printf("폴더생성인식\n");
+		strcat(commandstr, commandInput);
+		strcat(commandstr, "#");
 	}
 	else if (!strcmp(commandInput, "폴더삭제")) {
-		printf("폴더삭제인식\n");
+		strcat(commandstr, commandInput);
+		strcat(commandstr, "#");
 	}
 	else if (!strcmp(commandInput, "명령어")) {
-		printf("명령어인식\n");
+		strcat(commandstr, commandInput);
+		strcat(commandstr, "#");
 	}
 	else {
 		printf("존재하지 않는 명령어입니다. 다시 입력해주세요.\n");
