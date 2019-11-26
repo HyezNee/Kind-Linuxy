@@ -1,8 +1,8 @@
-#include<stdio.h>
-#include"commandManager.c"
+#include "header.h"
 
 int main() {
 	_manage();
 
+	system("pause");
 	return 0;
 }

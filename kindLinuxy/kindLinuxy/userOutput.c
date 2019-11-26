@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+// #include "header.h"
 
-int _work(char **info) {//execl,wait,exit
+int _work(char **info) {	//execl,wait,exit
 	int stat = 0;
 
 	if (!strcmp(info[0], "경로이동")) {
