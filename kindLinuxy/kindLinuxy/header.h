@@ -10,8 +10,7 @@ void _manage();
 void _printInfo();
 
 //userInput
-void _command();
-void _parse(char *str, char *buf);
+void _command(char** info);
 
 //userOutput
 int _work(char **info);

@@ -57,10 +57,5 @@ void _command(char** info) {//readline으로 바꾸기 나중에
 		printf("존재하지 않는 명령어입니다. 다시 입력해주세요.\n");
 	}
 
-	//return info;
 }
 
-void _parse(char *str, char *buf) {
-
-
-}
