@@ -40,6 +40,19 @@ int _work(char** info) {        //execl,wait,exit
 			return 1;
 		}
 	}
+	else if (!strcmp(info[0], "설명")) {
+
+	}
+	else if (!strcmp(info[0], "폴더생성")) {
+		info[0] = "mkdir";
+		//내일만들겠움
+	}
+	else if (!strcmp(info[0], "폴더삭제")) {
+
+	}
+	else if (!strcmp(info[0], "명령어")) {
+
+	}
 	return stat;    // 정상적 종료 (stat == 0)
 }
 
