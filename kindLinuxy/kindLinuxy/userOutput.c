@@ -2,8 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
-// #include "header.h"
+#include "header.h"
 
 int _work(char** info) {        //execl,wait,exit
 	int stat = 0;
