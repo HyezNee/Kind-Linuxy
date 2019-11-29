@@ -8,4 +8,8 @@ Members :
 >201811203 은정연  
 >201811224 조혜진  
   
-Final Report Link : https://docs.google.com/document/d/1u7hHgCMJYVonuF-kCmHLUyWks3qNMUh5c2nM_24Fwmc/edit
+Final Report Link : https://docs.google.com/document/d/1u7hHgCMJYVonuF-kCmHLUyWks3qNMUh5c2nM_24Fwmc/edit  
+
+## 주의사항
+kindLinuxy2 폴더 앞에 있는 파일들은 어떤 일이 있어도 절대로 윈도우 상에서 건들지 마세요.
+linux의 vi editor상으로 편집한 것을 옮겨서 푸시하는 것은 가능합니다.
