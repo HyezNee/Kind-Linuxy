@@ -37,7 +37,29 @@ int _work(char** info) {        //execl,wait,exit
 		}
 	}
 	else if (!strcmp(info[0], "설명")) {
+		if (info[2] != NULL) {	//kindLinuxy 내의 명령어들 설명->파일 참조
 
+		}
+		else {// 그냥 man 입력
+			info[0] = "man";
+			pid_t childpid;
+			childpid = fork();
+			info[1] = info[2];
+			info[2] = "\0";	//어차피 다 null 이므로 상관없을듯
+			if (childpid == -1) {
+				perror("명령 실행 실패 : 포크 실패(코드1)");
+				return 1;
+			}
+			if (childpid == 0) {    // Child code
+				execv("/bin/ls", info);
+				perror("명령 실행 실패 : 명령 불러오기 실패(코드2)");
+				return 1;
+			}
+			else if (childpid != wait(NULL)) {      // parent code
+				perror("명령 실행 실패 : 부모 기다리기 실패(코드3)");
+				return 1;
+			}
+		}
 	}
 	else if (!strcmp(info[0], "폴더생성")) {
 		info[0] = "mkdir";
@@ -60,7 +82,24 @@ int _work(char** info) {        //execl,wait,exit
 		}
 	}
 	else if (!strcmp(info[0], "폴더삭제")) {
-
+		info[0] = "rmdir";
+		pid_t childpid;
+		childpid = fork();
+		info[1] = info[2];
+		info[2] = "\0";
+		if (childpid == -1) {
+			perror("명령 실행 실패 : 포크 실패(코드1)");
+			return 1;
+		}
+		if (childpid == 0) {    // Child code
+			execv("/bin/ls", info);
+			perror("명령 실행 실패 : 명령 불러오기 실패(코드2)");
+			return 1;
+		}
+		else if (childpid != wait(NULL)) {      // parent code
+			perror("명령 실행 실패 : 부모 기다리기 실패(코드3)");
+			return 1;
+		}
 	}
 	else if (!strcmp(info[0], "명령어")) {
 
