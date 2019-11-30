@@ -17,8 +17,8 @@ void _manage() {	//exit 말고 atexit 써야할듯?
 //	atexit(_printExitMsg);
 
 	while(!doneflag){
-		_printInfo();
+//		_printInfo();
 		_command(info);
-	//	work(info);
+//		work(info);
 	}
 }
