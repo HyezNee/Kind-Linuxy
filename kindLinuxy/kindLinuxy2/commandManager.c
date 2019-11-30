@@ -1,7 +1,6 @@
 #include <signal.h>
 #include <stdlib.h>
-#include <stdio.h>
-// #include "header.h"
+#include "header.h"
 
 static volatile sig_atomic_t doneflag = 0;
 
@@ -14,25 +13,19 @@ void _printExitMsg() {
 }
 
 void _manage() {	//exit 말고 atexit 써야할듯?
-	char* info[4];	// 일단 넉넉하게 이렇게...
+	char** info;	// 일단 넉넉하게 이렇게...
 	atexit(_printExitMsg);
 
-	struct sigaction act;
-	act.sa_handler = handler;
-	act.sa_flags = 0;
-	
-
 	while(!doneflag){
-	//	_printInfo();
-	//	_command(info);
-	//	work(info);
-		printf("kindLinuxy");
+		_printInfo();
+		_command(info);
+		work(info);
 	}
-	printf("END!");
-
 }
 
+/*
 int main(void){
+	// printf("이것은 한글이다.")
 	_manage();
 	return 0;
-}
+}*/

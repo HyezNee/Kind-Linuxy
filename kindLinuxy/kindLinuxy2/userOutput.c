@@ -2,8 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
-// #include "header.h"
+#include "header.h"
 
 int _work(char** info) {        //execl,wait,exit
 	int stat = 0;
@@ -20,12 +19,12 @@ int _work(char** info) {        //execl,wait,exit
 		free(directory);
 		char cwd[100];
 		getcwd(cwd, sizeof(cwd));
-		printf("current path : %s", cwd);
+		printf("%s", cwd);
 	}
 	else if (!strcmp(info[0], "목록")) {
 		info[0] = "ls";
 		pid_t childpid;
-		// printf("뭐징 %s %s", info[0], info[1]);
+		printf("뭐징 %s %s", info[0], info[1]);
 		childpid = fork();
 		if (childpid == -1) {
 			perror("명령 실행 실패 : 포크 실패(코드1)");
@@ -50,17 +49,18 @@ int _work(char** info) {        //execl,wait,exit
 	}
 	else if (!strcmp(info[0], "폴더삭제")) {
 
-			}
+	}
 	else if (!strcmp(info[0], "명령어")) {
 
-			}
-	return stat;    // 정상적 종료 (stat == 0)
 	}
+	return stat;    // 정상적 종료 (stat == 0)
+}
 
 void _fileopen() {//open,read,lseek
 
 }
 
+/*
 int main(void) {	// 테스트용 메인 함수
 	char* info[3];
 
@@ -74,3 +74,4 @@ int main(void) {	// 테스트용 메인 함수
 	_work(info);
 	return 0;
 }
+*/
