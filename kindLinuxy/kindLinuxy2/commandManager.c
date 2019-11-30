@@ -1,5 +1,3 @@
-#include <signal.h>
-#include <stdlib.h>
 #include "header.h"
 
 static volatile sig_atomic_t doneflag = 0;
