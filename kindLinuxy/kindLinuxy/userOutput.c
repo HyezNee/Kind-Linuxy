@@ -8,7 +8,7 @@ int _work(char** info) {        //execl,wait,exit
 	int stat = 0;
 
 	if (!strcmp(info[0], "경로이동")) {
-		int len = (int)(strlen(info[1])) + 3;
+		int len = (int)(strlen(info[2])) + 3;
 		char* directory = malloc(sizeof(char) * len);   // /경로 길이 만큼 메모리 할당
 		strcpy(directory, "./");
 		strcat(directory, info[1]);     // 문자열 붙이기
