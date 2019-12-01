@@ -87,7 +87,7 @@ int _work(char** info) {        //execl,wait,exit
 			return 1;
 		}
 		if (childpid == 0) {    // Child code
-			execv("/bin/ls", info);
+			execv("/bin/mkdir", info);
 			perror("명령 실행 실패 : 명령 불러오기 실패(코드2)");
 			free(info[1]);
 			return 1;
