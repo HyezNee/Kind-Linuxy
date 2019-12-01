@@ -11,5 +11,4 @@ Members :
 Final Report Link : https://docs.google.com/document/d/1u7hHgCMJYVonuF-kCmHLUyWks3qNMUh5c2nM_24Fwmc/edit  
 
 ### 주의사항
->kindLinuxy2 폴더 앞에 있는 파일들은 어떤 일이 있어도 절대로 윈도우에서 편집하지 마세요.  
->linux의 vi editor상으로 편집한 것을 옮겨서(복사, 불여넣기) 푸시하는 것은 가능합니다.
+>현재 kindLinuxy 3이 최종입니다.변경사항은 kindLinuxy2 에서 잘 실행되는 지 확인 후! kindLinuxy3 에다 옮기고 commit, push 하도록합시다
