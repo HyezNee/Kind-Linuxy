@@ -116,10 +116,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="commandManager.c" />
-    <ClCompile Include="kindLinuxy.c" />
+    <ClCompile Include="kindLinuxy.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="userInfo.c" />
     <ClCompile Include="userInput.c" />
-    <ClCompile Include="userOutput.c" />
+    <ClCompile Include="userOutput.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />

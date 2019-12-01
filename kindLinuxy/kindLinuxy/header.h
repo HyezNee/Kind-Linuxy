@@ -2,6 +2,7 @@
 
 #include<stdio.h>
 #include<string.h>
+#include <stdlib.h>
 
 //commandManager
 void _manage();
@@ -13,5 +14,5 @@ void _printInfo();
 void _command(char** info);
 
 //userOutput
-int _work(char **info);
-void _fileopen();
+// int _work(char **info);
+// void _fileopen();

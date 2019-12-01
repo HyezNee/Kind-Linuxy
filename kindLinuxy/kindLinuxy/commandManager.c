@@ -13,12 +13,17 @@ void _printExitMsg() {
 }
 
 void _manage() {	//exit 말고 atexit 써야할듯?
-	char** info;	// 일단 넉넉하게 이렇게...
+	char* info[4];	// 일단 넉넉하게 이렇게...
 	atexit(_printExitMsg);
 
 	while(!doneflag){
 		_printInfo();
 		_command(info);
-		work(info);
+		//_work(info);
 	}
+}
+
+int main(void) {
+	_manage();
+	return 0;
 }

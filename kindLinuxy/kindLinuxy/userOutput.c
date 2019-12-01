@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
+// #include <unistd.h>
 #include "header.h"
 
 int _work(char** info) {        //execl,wait,exit
@@ -9,7 +9,7 @@ int _work(char** info) {        //execl,wait,exit
 
 	if (!strcmp(info[0], "경로이동")) {
 		int len = (int)(strlen(info[2])) + 3;
-		char* directory = malloc(sizeof(char) * len);   // /경로 길이 만큼 메모리 할당
+		char* directory = (char*)malloc(sizeof(char) * len);   // /경로 길이 만큼 메모리 할당
 		strcpy(directory, "./");
 		strcat(directory, info[1]);     // 문자열 붙이기
 		//printf("%s", directory);
