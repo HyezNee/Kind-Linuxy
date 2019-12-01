@@ -1,4 +1,10 @@
 #include "header.h"
+#define CD 1
+#define LS 4
+#define MKDIR 8
+#define RMDIR 11
+#define INSTRUCTION 16
+#define MAN 18
 
 int _work(char** info) {        //execl,wait,exit
 	int stat = 0;
@@ -38,7 +44,7 @@ int _work(char** info) {        //execl,wait,exit
 	}
 	else if (!strcmp(info[0], "설명")) {
 		if (info[2] != NULL) {	//kindLinuxy 내의 명령어들 설명->파일 참조
-
+			//_fileopen 가서 info[2] 내용에 따라 위에 define 에 해당하는 해당하는 줄부터 그 다음 define 해당하는 줄 전까지 파일 읽으면 됨.
 		}
 		else {// 그냥 man 입력
 			info[0] = "man";
@@ -102,12 +108,17 @@ int _work(char** info) {        //execl,wait,exit
 		}
 	}
 	else if (!strcmp(info[0], "명령어")) {
+		//fileopen 으로 가서 전체 파일 다읽어오면됨!!
 
 	}
 	return stat;    // 정상적 종료 (stat == 0)
 }
 
 void _fileopen() {//open,read,lseek
+	int myfd;	//파일 읽으려고 file descriptor 생성
+	if ((myfd = open("commanddescription.txt", O_RDONLY)) == -1) {
+		perror("Failed to open file");
+	}
 
 }
 
