@@ -25,8 +25,3 @@ void _manage() {	//exit 말고 atexit 써야할듯?
 }
 
 
-int main(void){
-	// printf("이것은 한글이다.")
-	_manage();
-	return 0;
-}
