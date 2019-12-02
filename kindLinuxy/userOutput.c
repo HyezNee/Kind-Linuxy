@@ -3,7 +3,6 @@
 #define LS 4
 #define MKDIR 8
 #define RMDIR 11
-#define INSTRUCTION 16
 #define MAN 18
 
 int readline(int fd, char* buf, int nbyte){
@@ -27,7 +26,7 @@ void _fileopen(char **buf) {	// 뒤에 놔두면 인식이 안되는 문제가 �
 	int fd;
 	char buffer[200];
 	 ssize_t bytesread;
-	 for (int i = 0; i < 6; i++) {
+	 for (int i = 0; i < 5; i++) {
 		 strcpy(buf[i], "");
 	}
 
@@ -49,13 +48,9 @@ void _fileopen(char **buf) {	// 뒤에 놔두면 인식이 안되는 문제가 �
 			bytesread = readline(fd, buffer, sizeof(buffer));
 			strcat(buf[3], buffer);
 		}
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 4; i++) {
 			bytesread = readline(fd, buffer, sizeof(buffer));
 			strcat(buf[4], buffer);
-		}
-		for (int i = 0; i < 5; i++) {
-			bytesread = readline(fd, buffer, sizeof(buffer));
-			strcat(buf[5], buffer);
 		}
      }
 	 close(fd);
@@ -114,39 +109,13 @@ int _work(char** info,char** buf) {        //execl,wait,exit
 				printf("%s", buf[2]);
 			else if (!strcmp(info[2], "폴더삭제"))
 				printf("%s", buf[3]);
-			else if (!strcmp(info[2], "명령어"))
-				printf("%s", buf[4]);
 			else if (!strcmp(info[2], "설명"))
-				printf("%s", buf[5]);
+				printf("%s", buf[4]);
 			else {	// 친절한 리눅씨의 전체 설명 출력
-				for (int i = 0; i < 6; i++) {
+				for (int i = 0; i < 5; i++) {
 				printf("%s", buf[i]);
 				}
 			}
-			/*
-			info[0] = "man";
-			pid_t childpid;
-			info[1] = info[2];
-			info[2] = (char*)0;	// "\0"과 (char*)0은 돌아가는건 똑같으나 의미가 달라 혹시몰라서 교체
-			childpid = fork();
-			if (childpid == -1) {
-				perror("명령 실행 실패 : 포크 실패(코드1)");
-				free(info[1]);
-				return 1;
-			}
-			if (childpid == 0) {    // Child code
-				execv("/usr/bin/man", info);
-				printf("ㅎㅎ");
-				free(info[1]);
-				perror("명령 실행 실패 : 명령 불러오기 실패(코드2)");
-				return 1;
-			}
-			else if (childpid != wait(NULL)) {      // parent code
-				perror("명령 실행 실패 : 부모 기다리기 실패(코드3)");
-				free(info[1]);
-				return 1;
-			}
-			*/
 		}
 	}
 	else if (!strcmp(info[0], "폴더생성")) {
@@ -195,30 +164,5 @@ int _work(char** info,char** buf) {        //execl,wait,exit
 			return 1;
 		}
 	}
-	/*
-	else if (!strcmp(info[0], "명령어")) {
-		
-		for (int i = 0; i < 6; i++) {
-			printf("%s", buf[i]);
-		}
-	
-	}
-	*/
 	return stat;    // 정상적 종료 (stat == 0)
 }
-
-/*
-int main(void) {	// 테스트용 메인 함수
-	char* info[3];
-
-	//info[0] = "목록";
-	//info[1] = "-l";
-	//info[2] = (char*)0;
-
-	info[0] = "경로이동";
-	info[1] = "NewDir";
-	info[2] = (char*)0;
-	_work(info);
-	return 0;
-}
-*/

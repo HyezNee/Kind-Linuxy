@@ -15,8 +15,8 @@ void handler(int sig) {
 
 void _manage() {	//exit 말고 atexit 써야할듯?
 	char* info[4];	// 일단 넉넉하게 이렇게...
-	char* buf[6];
-	for (int i = 0; i < 6; i++) {
+	char* buf[5];
+	for (int i = 0; i < 5; i++) {
 		buf[i] = (char*)malloc(sizeof(char) * 1000);
 	}
 	_fileopen(buf);
@@ -30,7 +30,7 @@ void _manage() {	//exit 말고 atexit 써야할듯?
 		_command(info);
 		_work(info,buf);
 	}
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 5; i++) {
 		free(buf[i]);
 	}
 	free(buf);
