@@ -12,15 +12,7 @@ int readline(int fd, char* buf, int nbyte){
 
 	while(numread < nbyte - 1) {
 		returnval = read(fd, buf + numread, 1);
-		/* if ((returnval ==1) && (errno == EINTR))
-				continue;
-			if ((returnval == 0) && (numread == 0))
-				return 0;
-			if (returnval == 0)
-				break;
-			if (returnval == 1)
-				return 1;
-		*/
+		
 
 		numread++;
 
@@ -29,12 +21,11 @@ int readline(int fd, char* buf, int nbyte){
 			return numread;
 		}
 	}
-	//errno = EINVAL;
-	//return -1;
 }
 
-int _work(char** info) {        //execl,wait,exit
+int _work(char** info,char** buf) {        //execl,wait,exit
 	int stat = 0;
+	
 
 	if (!strcmp(info[0], "경로이동")) {
 		int len = (int)(strlen(info[2])) + 3;
@@ -75,6 +66,18 @@ int _work(char** info) {        //execl,wait,exit
 	else if (!strcmp(info[0], "설명")) {
 		if (info[2] != NULL) {	//kindLinuxy 내의 명령어들 설명->파일 참조
 			//_fileopen 가서 info[2] 내용에 따라 위에 define 에 해당하는 해당하는 줄부터 그 다음 define 해당하는 줄 전까지 파일 읽으면 됨.
+			if (!strcmp(info[2], "경로이동"))
+				printf("%s", buf[0]);
+			else if (!strcmp(info[2], "목록"))
+				printf("%s", buf[1]);
+			else if (!strcmp(info[2], "폴더생성"))
+				printf("%s", buf[2]);
+			else if (!strcmp(info[2], "폴더삭제"))
+				printf("%s", buf[3]);
+			else if (!strcmp(info[2], "명령어"))
+				printf("%s", buf[4]);
+			else if (!strcmp(info[2], "설명"))
+				printf("%s", buf[5]);
 		}
 		else {// 그냥 man 입력
 			info[0] = "man";
@@ -147,29 +150,41 @@ int _work(char** info) {        //execl,wait,exit
 		}
 	}
 	else if (!strcmp(info[0], "명령어")) {
-		//fileopen 으로 가서 전체 파일 다읽어오면됨!!
-		int fd;
-		char buf[200];
-		ssize_t bytesread;
-
-		if((fd = open("commanddescription.txt", O_RDONLY))!= -1){
-			lseek(fd, (off_t)0, SEEK_SET);
-			for(int i=0; i<21; i++){
-				bytesread = readline(fd, buf, sizeof(buf));
-				printf("%s", buf);
-			}
+		
+		for (int i = 0; i < 6; i++) {
+			printf("%s", buf[i]);
 		}
-		return 0;
 	
 	}
 	return stat;    // 정상적 종료 (stat == 0)
 }
 
-void _fileopen() {//open,read,lseek
-	int myfd;	//파일 읽으려고 file descriptor 생성
-	if ((myfd = open("commanddescription.txt", O_RDONLY)) == -1) {
-		perror("Failed to open file");
-	}
+void _fileopen(char **buf) {
+	int fd;
+	char buffer[200];
+	 ssize_t bytesread;
+ 
+     if((fd=open("commanddescription.txt",O_RDONLY))!=-1){
+        lseek(fd,(off_t)0,SEEK_SET);
+		for (int i = 0; i < 3; i++) {
+			bytesread = readline(fd, buf[0], sizeof(buffer));
+		}
+		for (int i = 0; i < 4; i++) {
+			bytesread = readline(fd, buf[1], sizeof(buffer));
+		}
+		for (int i = 0; i < 3; i++) {
+			bytesread = readline(fd, buf[2], sizeof(buffer));
+		}
+		for (int i = 0; i < 5; i++) {
+			bytesread = readline(fd, buf[3], sizeof(buffer));
+		}
+		for (int i = 0; i < 2; i++) {
+			bytesread = readline(fd, buf[4], sizeof(buffer));
+		}
+		for (int i = 0; i < 4; i++) {
+			bytesread = readline(fd, buf[5], sizeof(buffer));
+		}
+     }
 
 }
 

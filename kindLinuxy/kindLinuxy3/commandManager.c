@@ -15,6 +15,11 @@ void handler(int sig) {
 
 void _manage() {	//exit 말고 atexit 써야할듯?
 	char* info[4];	// 일단 넉넉하게 이렇게...
+	char* buf[6];
+	for (int i = 0; i < 6; i++) {
+		buf[i] = (char*)malloc(sizeof(char) * 1000);
+	}
+	_fileopen(buf);
 	atexit(_printExitMsg);
 	if (signal(SIGINT, handler) == SIG_ERR){
 		perror("에러 : 시그널 처리 오류");
@@ -23,8 +28,11 @@ void _manage() {	//exit 말고 atexit 써야할듯?
 	while(1){
 		_printInfo();
 		_command(info);
-		_work(info);
+		_work(info,buf);
 		// printf("\n");
+	}
+	for (int i = 0; i < 6; i++) {
+		free(buf[i]);
 	}
 }
 

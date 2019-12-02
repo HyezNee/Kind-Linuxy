@@ -20,7 +20,7 @@ void _printInfo();
 void _command(char** info);
 
 //userOutput
-int _work(char **info);
-void _fileopen();
+int _work(char** info, char** buf);
+void _fileopen(char **buf);
 
 //
