@@ -29,11 +29,11 @@ void _manage() {	//exit 말고 atexit 써야할듯?
 		_printInfo();
 		_command(info);
 		_work(info,buf);
-		// printf("\n");
 	}
 	for (int i = 0; i < 6; i++) {
 		free(buf[i]);
 	}
+	free(buf);
 }
 
 
