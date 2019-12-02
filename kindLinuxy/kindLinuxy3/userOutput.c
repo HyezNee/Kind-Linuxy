@@ -194,7 +194,7 @@ void _fileopen(char **buf) {
 			strcat(buf[5], buffer);
 		}
      }
-
+	 close(fd);
 }
 
 /*
