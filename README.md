@@ -19,4 +19,5 @@ Final Report Link : https://docs.google.com/document/d/1u7hHgCMJYVonuF-kCmHLUyWk
 - 복붙했을 경우 permission이 기존 linux 파일과 다를 수도 있으므로, 해당 경로에서 **chmod a+rw [파일명]** 명령어를 입력해줍시다.
 - 컴파일 하는 법 :  
 **gcc -c [헤더파일을 제외한 모든 소스 파일]**     ( ===> 오브젝트 파일(.o) 생성됨 )   -> gcc -c *.c
+
 **gcc -o [실행 파일 이름] [모든 오브젝트 파일]**   ( ===> 실행 파일 생성됨 ) -> gcc -o test1 *.o
