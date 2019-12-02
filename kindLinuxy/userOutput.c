@@ -1,9 +1,4 @@
 #include "header.h"
-#define CD 1
-#define LS 4
-#define MKDIR 8
-#define RMDIR 11
-#define MAN 18
 
 int readline(int fd, char* buf, int nbyte){
 	int numread = 0;
