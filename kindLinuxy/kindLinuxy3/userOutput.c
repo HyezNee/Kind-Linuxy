@@ -152,7 +152,7 @@ int _work(char** info) {        //execl,wait,exit
 		char buf[200];
 		ssize_t bytesread;
 
-		if((fd = pen("commanddescription.txt", O_RDONLY))!= -1){
+		if((fd = open("commanddescription.txt", O_RDONLY))!= -1){
 			lseek(fd, (off_t)0, SEEK_SET);
 			for(int i=0; i<21; i++){
 				bytesread = readline(fd, buf, sizeof(buf));
