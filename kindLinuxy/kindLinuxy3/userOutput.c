@@ -160,7 +160,7 @@ int _work(char** info) {        //execl,wait,exit
 			}
 		}
 		return 0;
-	}
+	
 	}
 	return stat;    // 정상적 종료 (stat == 0)
 }
