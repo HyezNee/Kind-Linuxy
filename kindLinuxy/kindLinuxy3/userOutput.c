@@ -163,26 +163,35 @@ void _fileopen(char **buf) {
 	int fd;
 	char buffer[200];
 	 ssize_t bytesread;
- 
+	 for (int i = 0; i < 6; i++) {
+		 strcpy(buf[i], "");
+	}
+
      if((fd=open("commanddescription.txt",O_RDONLY))!=-1){
         lseek(fd,(off_t)0,SEEK_SET);
 		for (int i = 0; i < 3; i++) {
-			bytesread = readline(fd, buf[0], sizeof(buffer));
+			bytesread = readline(fd, buffer, sizeof(buffer));
+			strcat(buf[0], buffer);
 		}
 		for (int i = 0; i < 4; i++) {
-			bytesread = readline(fd, buf[1], sizeof(buffer));
+			bytesread = readline(fd, buffer, sizeof(buffer));
+			strcat(buf[1], buffer);
 		}
 		for (int i = 0; i < 3; i++) {
-			bytesread = readline(fd, buf[2], sizeof(buffer));
+			bytesread = readline(fd, buffer, sizeof(buffer));
+			strcat(buf[2], buffer);
 		}
 		for (int i = 0; i < 5; i++) {
-			bytesread = readline(fd, buf[3], sizeof(buffer));
+			bytesread = readline(fd, buffer, sizeof(buffer));
+			strcat(buf[3], buffer);
 		}
 		for (int i = 0; i < 2; i++) {
-			bytesread = readline(fd, buf[4], sizeof(buffer));
+			bytesread = readline(fd, buffer, sizeof(buffer));
+			strcat(buf[4], buffer);
 		}
-		for (int i = 0; i < 4; i++) {
-			bytesread = readline(fd, buf[5], sizeof(buffer));
+		for (int i = 0; i < 5; i++) {
+			bytesread = readline(fd, buffer, sizeof(buffer));
+			strcat(buf[5], buffer);
 		}
      }
 
