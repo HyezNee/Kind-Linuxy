@@ -19,10 +19,8 @@ int _work(char** info) {        //execl,wait,exit
 			perror("명령 실행 실패 : 명령 불러오기 실패(코드2)");
 		}
 		free(directory);
-		char cwd[100];
-		getcwd(cwd, sizeof(cwd));
-		printf("%s", cwd);
 		free(info[2]);
+		printf("\n");
 	}
 	else if (!strcmp(info[0], "목록")) {
 		// printf("%s %s", info[0], info[1]);
@@ -55,7 +53,7 @@ int _work(char** info) {        //execl,wait,exit
 			info[0] = "man";
 			pid_t childpid;
 			info[1] = info[2];
-			info[2] = "\0";	//어차피 다 null 이므로 상관없을듯
+			info[2] = (char*)0;	// "\0"과 (char*)0은 돌아가는건 똑같으나 의미가 달라 혹시몰라서 교체
 			childpid = fork();
 			if (childpid == -1) {
 				perror("명령 실행 실패 : 포크 실패(코드1)");
@@ -79,7 +77,7 @@ int _work(char** info) {        //execl,wait,exit
 		info[0] = "mkdir";
 		pid_t childpid;
 		info[1] = info[2];
-		info[2] = "\0";
+		info[2] = (char*)0;
 		childpid = fork();
 		if (childpid == -1) {
 			perror("명령 실행 실패 : 포크 실패(코드1)");
@@ -102,7 +100,7 @@ int _work(char** info) {        //execl,wait,exit
 		info[0] = "rmdir";
 		pid_t childpid;
 		info[1] = info[2];
-		info[2] = "\0";
+		info[2] = (char*)0;
 		childpid = fork();
 		if (childpid == -1) {
 			perror("명령 실행 실패 : 포크 실패(코드1)");
@@ -110,7 +108,7 @@ int _work(char** info) {        //execl,wait,exit
 			return 1;
 		}
 		if (childpid == 0) {    // Child code
-			execv("/bin/ls", info);
+			execv("/bin/rmdir", info);
 			perror("명령 실행 실패 : 명령 불러오기 실패(코드2)");
 			free(info[1]);
 			return 1;

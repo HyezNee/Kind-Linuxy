@@ -13,20 +13,22 @@ void _command(char** info) {//readline으로 바꾸기 나중에
 	// info = (char**)malloc(sizeof(char*) * 4);
 	info[3] = NULL;
 
-	printf("명령어 입력 >>");
+	printf("명령어 입력 >> ");
 	scanf("%18s", commandInput);
 	if (!strcmp(commandInput, "설명")) {
 		info[0] = commandInput;
 		info[1] = NULL;
-		printf("설명을 출력할 명령어를 입력하세요(없으면 x입력)\n인자 입력 >>");
+		printf("설명을 출력할 명령어를 입력하세요(없으면 x입력)\n인자 입력 >> ");
 		scanf("%130s", arguments);
-		info[2] = arguments;
+		info[2] = (char*)malloc(sizeof(char) * 150);
+		strcpy(info[2], arguments);// info[2] = arguments 하면 arguments가 지역변수이므로 이 함수 끝나면 메모리 오류남
+		
 
 	}
 	else if (!strcmp(commandInput, "경로이동")) {
 		info[0] = commandInput;
 		info[1] = NULL;
-		printf("이동할 경로명 입력 >>");
+		printf("이동할 경로명 입력 >> ");
 		scanf("%130s", arguments);
 		// info[2] = arguments;
 		info[2] = (char*)malloc(sizeof(char) * 150);
@@ -34,7 +36,7 @@ void _command(char** info) {//readline으로 바꾸기 나중에
 	}
 	else if (!strcmp(commandInput, "목록")) {
 		info[0] = commandInput;
-		printf("원하는 옵션을 띄어쓰기 없이(0.옵션없음|1.길게 출력|2.수정시간순|3.크기순|4.모든파일출력|5.역순)");
+		printf("원하는 옵션을 띄어쓰기 없이(0.옵션없음|1.길게 출력|2.수정시간순|3.크기순|4.모든파일출력|5.역순) >> ");
 		scanf("%11s", options);	// %s는 띄어쓰기도 인식하므로 대신에 %[^\n] 사용
 		// printf("%s", options);
 		if (!strcmp(options, "0")) {
@@ -71,15 +73,18 @@ void _command(char** info) {//readline으로 바꾸기 나중에
 	}
 	else if (!strcmp(commandInput, "폴더생성")) {
 		info[0] = commandInput;
-		printf("생성 폴더명 입력 >>");
+		printf("생성 폴더명 입력 >> ");
 		scanf("%130s", arguments);
-		info[2] = arguments;
+		info[2] = (char*)malloc(sizeof(char) * 150);
+		strcpy(info[2], arguments);
 	}
 	else if (!strcmp(commandInput, "폴더삭제")) {
 		info[0] = commandInput;
-		printf("삭제할 입력 >>");
+		printf("삭제할 폴더명 입력 >> ");
 		scanf("%130s", arguments);
-		info[2] = arguments;
+		info[2] = (char*)malloc(sizeof(char) * 150);
+		strcpy(info[2], arguments);
+
 	}
 	else if (!strcmp(commandInput, "명령어")) {
 		info[0] = commandInput;
