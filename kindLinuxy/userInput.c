@@ -18,7 +18,7 @@ void _command(char** info) {//readline으로 바꾸기 나중에
 	if (!strcmp(commandInput, "설명")) {
 		info[0] = commandInput;
 		info[1] = NULL;
-		printf("설명을 출력할 명령어를 입력하세요(없으면 x입력)\n인자 입력 >> ");
+		printf("설명을 출력할 명령어를 입력하세요(해당 명령어 없을 경우, 명령어 전체 설명 출력)\n인자 입력 >> ");
 		scanf("%130s", arguments);
 		info[2] = (char*)malloc(sizeof(char) * 150);
 		strcpy(info[2], arguments);// info[2] = arguments 하면 arguments가 지역변수이므로 이 함수 끝나면 메모리 오류남
@@ -86,11 +86,12 @@ void _command(char** info) {//readline으로 바꾸기 나중에
 		strcpy(info[2], arguments);
 
 	}
+	/*
 	else if (!strcmp(commandInput, "명령어")) {
 		info[0] = commandInput;
 		info[1] = (char*)0;
 		info[2] = (char*)0;
-	}
+	}*/
 	else {
 		printf("존재하지 않는 명령어입니다. 다시 입력해주세요.\n");
 		info[0] = "-1";
