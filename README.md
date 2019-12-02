@@ -20,4 +20,4 @@ Final Report Link : https://docs.google.com/document/d/1u7hHgCMJYVonuF-kCmHLUyWk
 - 컴파일 하는 법 :  
 **gcc -c [헤더파일을 제외한 모든 소스 파일]**     ( ===> 오브젝트 파일(.o) 생성됨 )   -> gcc -c *.c
 
-**gcc -o [실행 파일 이름] [모든 오브젝트 파일]**   ( ===> 실행 파일 생성됨 ) -> gcc -o test1 *.o
+  **gcc -o [실행 파일 이름] [모든 오브젝트 파일]**   ( ===> 실행 파일 생성됨 ) -> gcc -o test1 *.o
