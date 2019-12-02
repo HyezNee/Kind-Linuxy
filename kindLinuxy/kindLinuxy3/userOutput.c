@@ -6,6 +6,33 @@
 #define INSTRUCTION 16
 #define MAN 18
 
+int readline(int fd, char* buf, int nbyte){
+	int numread = 0;
+	int returnval;
+
+	while(numread < nbyte - 1) {
+		returnval = read(fd, buf + numread, 1);
+		/* if ((returnval ==1) && (errno == EINTR))
+				continue;
+			if ((returnval == 0) && (numread == 0))
+				return 0;
+			if (returnval == 0)
+				break;
+			if (returnval == 1)
+				return 1;
+		*/
+
+		numread++;
+
+		if(buf[numread - 1] == '\n'){
+			buf[numread] = '\0';
+			return numread;
+		}
+	}
+	//errno = EINVAL;
+	//return -1;
+}
+
 int _work(char** info) {        //execl,wait,exit
 	int stat = 0;
 
@@ -121,6 +148,19 @@ int _work(char** info) {        //execl,wait,exit
 	}
 	else if (!strcmp(info[0], "명령어")) {
 		//fileopen 으로 가서 전체 파일 다읽어오면됨!!
+		int fd;
+		char buf[200];
+		ssize_t bytesread;
+
+		if((fd = pen("commanddescription.txt", O_RDONLY))!= -1){
+			lseek(fd, (off_t)0, SEEK_SET);
+			for(int i=0; i<21; i++){
+				bytesread = readline(fd, buf, sizeof(buf));
+				printf("%s", buf);
+			}
+		}
+		return 0;
+	}
 	}
 	return stat;    // 정상적 종료 (stat == 0)
 }
