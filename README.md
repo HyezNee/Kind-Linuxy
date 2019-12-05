@@ -9,6 +9,7 @@ Members :
 >201811224 조혜진  
   
 Final Report Link : https://docs.google.com/document/d/1u7hHgCMJYVonuF-kCmHLUyWks3qNMUh5c2nM_24Fwmc/edit  
+Youtube link : https://youtu.be/pt6CDgZC79k
 
 ### 주의사항
 - ubuntu 실제 home 경로 :  
